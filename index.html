@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanillaSpin Test</title>
+    <script src="vanilla-spin.js"></script>
+    <style>
+        #container {
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Global Loader</h2>
+    <button id="showGlobalLoader">Show Global Loader</button>
+    <button id="hideGlobalLoader">Hide Global Loader</button>
+
+    <h2>Loader Inside a Container</h2>
+    <div id="container">
+        <button id="showContainerLoader">Show Loader in Container</button>
+        <button id="hideContainerLoader">Hide Loader</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Global Loader
+            const globalLoader = new VanillaSpinLoader();
+            globalLoader.init();
+
+            document.getElementById("showGlobalLoader").addEventListener("click", () => globalLoader.show());
+            document.getElementById("hideGlobalLoader").addEventListener("click", () => globalLoader.hide());
+
+            // Container-Based Loader
+            const container = document.getElementById("container");
+            const containerLoader = new VanillaSpinLoader({ container });
+            containerLoader.init();
+
+            document.getElementById("showContainerLoader").addEventListener("click", () => containerLoader.show());
+            document.getElementById("hideContainerLoader").addEventListener("click", () => containerLoader.hide());
+        };
+    </script>
+</body>
+</html>
+
