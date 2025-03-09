@@ -16,7 +16,7 @@ VanillaSpin is a lightweight, dependency-free JavaScript library for adding glob
 ### Using CDN
 Include the script in your HTML file:
 ```html
-<script src="https://cdn.jsdelivr.net/gh/YOUR-USERNAME/VanillaSpin/vanillaSpin.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SubinVs/VanillaSpin/vanillaSpin.js"></script>
 ```
 
 ### Manual Installation
