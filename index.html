@@ -3,49 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VanillaSpin Test</title>
-    <script src="vanilla-spin.js"></script>
+    <title>VanillaSpin Demo</title>
     <style>
-        #container {
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
             width: 300px;
             height: 200px;
-            border: 1px solid black;
-            position: relative;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #2980b9;
         }
     </style>
+    <script src="vanilla-spin.js"></script>
 </head>
 <body>
-    <h2>Global Loader</h2>
-    <button id="showGlobalLoader">Show Global Loader</button>
-    <button id="hideGlobalLoader">Hide Global Loader</button>
-
-    <h2>Loader Inside a Container</h2>
-    <div id="container">
-        <button id="showContainerLoader">Show Loader in Container</button>
-        <button id="hideContainerLoader">Hide Loader</button>
+    <h1>VanillaSpin Loader Demo</h1>
+    
+    <button class="btn" onclick="showGlobalLoader()">Show Global Loader</button>
+    
+    <div class="container" id="loaderContainer">
+        <button class="btn" onclick="showContainerLoader()">Show Container Loader</button>
     </div>
 
     <script>
-        window.onload = function() {
-            // Global Loader
-            const globalLoader = new VanillaSpinLoader();
-            globalLoader.init();
-
-            document.getElementById("showGlobalLoader").addEventListener("click", () => globalLoader.show());
-            document.getElementById("hideGlobalLoader").addEventListener("click", () => globalLoader.hide());
-
-            // Container-Based Loader
-            const container = document.getElementById("container");
-            const containerLoader = new VanillaSpinLoader({ container });
-            containerLoader.init();
-
-            document.getElementById("showContainerLoader").addEventListener("click", () => containerLoader.show());
-            document.getElementById("hideContainerLoader").addEventListener("click", () => containerLoader.hide());
-        };
+        // Initialize global loader
+        const globalLoader = new VanillaSpinLoader();
+        globalLoader.init();
+        
+        // Initialize container loader
+        const containerLoader = new VanillaSpinLoader({ container: document.getElementById("loaderContainer") });
+        containerLoader.init();
+        
+        // Show and hide global loader
+        function showGlobalLoader() {
+            globalLoader.show();
+            setTimeout(() => globalLoader.hide(), 3000);
+        }
+        
+        // Show and hide container-based loader
+        function showContainerLoader() {
+            containerLoader.show();
+            setTimeout(() => containerLoader.hide(), 3000);
+        }
     </script>
 </body>
 </html>
-
